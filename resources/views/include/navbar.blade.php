@@ -59,8 +59,8 @@
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="home"></i><span>Manage Category</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="add_category.php">Add Category</a></li>
-            <li><a class="nav-link" href="category.php">Category List</a></li>
+            <li><a class="nav-link" href="add_category">Add Category</a></li>
+            <li><a class="nav-link" href="category">Category List</a></li>
             <!--<li><a class="nav-link" href="add_subcategory.php">Add Subcategory</a></li>
             <li><a class="nav-link" href="subcategory.php">Subcategory List</a></li>
             <li><a class="nav-link" href="home_category.php">Home Category List</a></li>-->

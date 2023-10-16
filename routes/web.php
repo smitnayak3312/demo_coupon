@@ -23,4 +23,12 @@ Route::get('/couponHistory', function () {
     return view('couponHistory');
 });
 
+Route::get('/add_category', function () {
+    return view('add_category');
+});
+
+Route::get('/category', function () {
+    return view('category');
+});
+
 

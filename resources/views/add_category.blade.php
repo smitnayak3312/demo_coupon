@@ -1,59 +1,3 @@
-<?php 
-include('include/config.php');
-@ob_start();
-@session_start();
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
- {
-    header('location:login.php');
- }
- if(isset($_POST['submit']))
-{  
-   $name=trim($_POST['name']);  
-   $is_popular=trim($_POST['is_popular']);
-  // $urlspd="https://starpaneldevelopers.com/oyee/home_slider/";
-   $newname='';
-   $flag=1;
-    if($_FILES['image']['name'] != '')
-  {
-        $filename=$_FILES['image']['name'];
-        $size=$_FILES['image']['size'];
-        $temp=$_FILES['image']['tmp_name'];
-        $type=$_FILES['image']['type'];
-        $ext=strtolower(end(explode('.',$filename)));
-        $extension=array("jpeg","jpg","png");
-        $newname=rand().'.'.$ext;        
-        if(!in_array($ext,$extension))
-        {
-            echo '<script>alert("please select Jpeg,Jpg,Png image");</script>';
-            $flag=0;
-        }else
-        if($size > 5120000)
-        {
-            echo '<script>alert("please upload below 5mb");</script>';
-            $flag=0;
-        }else
-        {
-            move_uploaded_file($temp,"image/category_image/".$newname);
-            $flag=1;
-        } 
-  }
- 
- // $result=$urlspd.$newname;
-  if($flag==1)
-  { 
-        
-      $query = "insert into category set name='".$name."',is_popular='".$is_popular."',image='".$newname."'";
-      if(mysqli_query($conn,$query))
-      {
-          //copy($temp,"img/products/".$newname);
-          echo '<script>alert("Category Add Successfully");</script>';
-          echo '<script>window.location.href = "category.php";</script>';
-      }
-  }
-   
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,8 +25,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -132,7 +76,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
         </section>
         
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->
