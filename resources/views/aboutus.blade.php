@@ -1,5 +1,5 @@
 <?php 
-
+echo "Done";
 include('include/config.php');
 @ob_start();
 @session_start();
