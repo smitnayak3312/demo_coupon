@@ -178,6 +178,7 @@ window.onload=my_code();
         </section>
         
       </div>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

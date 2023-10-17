@@ -1,66 +1,3 @@
-<?php 
-include('include/config.php');
-@ob_start();
-@session_start();
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
- {
-    header('location:login.php');
- }
- if(isset($_POST['submit']))
-{  
-   $name=trim($_POST['name']);
-   $vendorId=trim($_POST['vendorId']); 
-   $catId=trim($_POST['catId']); 
-   $select_type=trim($_POST['select_type']); 
-  // $urlspd="https://starpaneldevelopers.com/oyee/home_slider/";
-   $newname='';
-   $flag=1;
-    if($_FILES['image']['name'] != '')
-  {
-        $filename=$_FILES['image']['name'];
-        $size=$_FILES['image']['size'];
-        $temp=$_FILES['image']['tmp_name'];
-        $type=$_FILES['image']['type'];
-        $ext=strtolower(end(explode('.',$filename)));
-        $extension=array("jpeg","jpg","png");
-        $newname=rand().'.'.$ext;        
-        if(!in_array($ext,$extension))
-        {
-            echo '<script>alert("please select Jpeg,Jpg,Png image");</script>';
-            $flag=0;
-        }else
-        if($size > 5120000)
-        {
-            echo '<script>alert("please upload below 5mb");</script>';
-            $flag=0;
-        }else
-        {
-            move_uploaded_file($temp,"image/slider_image/".$newname);
-            $flag=1;
-        } 
-  }
- 
- // $result=$urlspd.$newname;
-  if($flag==1)
-  { 
-        
-      $query = "insert into slider set name='".$name."',type='".$select_type."',image='".$newname."'";
-      if($select_type==1){
-          $query .= ",vendorId='".$vendorId."'";
-      }else if($select_type==0){
-          $query .= ",vendorId='".$catId."'";
-      }
-      if(mysqli_query($conn,$query))
-      {
-          //copy($temp,"img/products/".$newname);
-          echo '<script>alert("Slider Add Successfully");</script>';
-          echo '<script>window.location.href = "add_slider.php</script>';
-      }
-  }
-   
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,8 +25,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -119,30 +56,14 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                       <label>Select Vendor</label>
                       <select name="vendorId" class="form-control selectric" >
                       <option value="">--Select Vendor--</option>
-                      <?php
-                      $query = "SELECT id,vendor_name FROM vendors where status='1'";
-                      $query_run = mysqli_query($conn, $query);
-
-                      while ($row = mysqli_fetch_array($query_run)) {
-                      echo "<option value='".$row['id']."'>".$row['vendor_name']."</option>";
-                      }
-
-                      ?>
+                      
                       </select>
                     </div>
                     <div class="form-group col-md-6" style="display:none;" id="category">
                       <label>Select Category</label>
                       <select name="catId" class="form-control selectric">
                           <option value="">--Select Category--</option>
-                      <?php
-                      $query = "SELECT id,name FROM category where status='1'";
-                      $query_run = mysqli_query($conn, $query);
-
-                      while ($row = mysqli_fetch_array($query_run)) {
-                      echo "<option value='".$row['id']."'>".$row['name']."</option>";
-                      }
-
-                      ?>
+                      
                       </select>
                     </div>
                     
@@ -171,7 +92,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
         </section>
         
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

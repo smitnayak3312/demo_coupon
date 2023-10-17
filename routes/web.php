@@ -31,4 +31,21 @@ Route::get('/category', function () {
     return view('category');
 });
 
+Route::get('/add_slider', function () {
+    return view('add_slider');
+});
+
+Route::get('/slider', function () {
+    return view('slider');
+});
+
+
+Route::get('/add_notification', function () {
+    return view('add_notification');
+});
+
+Route::get('/notificationList', function () {
+    return view('notificationList');
+});
+
 

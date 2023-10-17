@@ -2,7 +2,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
       <div class="sidebar-brand">
-        <a href="index.php"> <img alt="image" src="assets/img/splogo.png" class="header-logo" /><span class="logo-name">Spike Point</span></a>
+        <a href="index"> <img alt="image" src="assets/img/splogo.png" class="header-logo" /><span class="logo-name">Spike Point</span></a>
       </div>
       <ul class="sidebar-menu">
         <li class="dropdown">
@@ -69,97 +69,97 @@
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="image"></i><span>Manage Slider</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="add_slider.php">Add Slider</a></li>
-            <li><a class="nav-link" href="slider.php">Slider List</a></li>
+            <li><a class="nav-link" href="add_slider">Add Slider</a></li>
+            <li><a class="nav-link" href="slider">Slider List</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="bell"></i><span>Manage Notification</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="add_notification.php">Add Notification</a></li>
-            <li><a class="nav-link" href="notificationList.php">Notification List</a></li>
+            <li><a class="nav-link" href="add_notification">Add Notification</a></li>
+            <li><a class="nav-link" href="notificationList">Notification List</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="message-circle"></i><span>Manage Important Msg </span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="add_message.php">Add Message</a></li>
-            <li><a class="nav-link" href="importantList.php">Important Message List</a></li>
+            <li><a class="nav-link" href="add_message">Add Message</a></li>
+            <li><a class="nav-link" href="importantList">Important Message List</a></li>
           </ul>
         </li>
       
         <li class="dropdown">
-          <a href="showRatings.php" class="nav-link"><i data-feather="star"></i><span>Show Ratings</span></a>
+          <a href="showRatings" class="nav-link"><i data-feather="star"></i><span>Show Ratings</span></a>
         </li>
         
         
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layers"></i><span> Manage Coupon</span></a>
           <ul class="dropdown-menu">
-            <!--<li><a class="nav-link" href="add_coupon.php">Add Coupon</a></li>-->
-            <li><a class="nav-link" href="couponList.php">Coupon List</a></li>
+            <!--<li><a class="nav-link" href="add_coupon">Add Coupon</a></li>-->
+            <li><a class="nav-link" href="couponList">Coupon List</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="dollar-sign"></i><span> Manage Transaction</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="withdrawal.php">Withdrawal Pending</a></li>
-            <li><a class="nav-link" href="withdrawalList.php">Withdrawal List</a></li>
+            <li><a class="nav-link" href="withdrawal">Withdrawal Pending</a></li>
+            <li><a class="nav-link" href="withdrawalList">Withdrawal List</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="users"></i><span>Manage User</span></a>
           <ul class="dropdown-menu">
-              <li><a class="nav-link" href="add_user.php">Add User</a></li>
-            <li><a class="nav-link" href="userList.php">User List</a></li>
+              <li><a class="nav-link" href="add_user">Add User</a></li>
+            <li><a class="nav-link" href="userList">User List</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="users"></i><span>Manage Vendor</span></a>
           <ul class="dropdown-menu">
-              <li><a class="nav-link" href="add_vendor.php">Add Vendor</a></li>
-            <li><a class="nav-link" href="vendorList.php">Vendor List</a></li>
+              <li><a class="nav-link" href="add_vendor">Add Vendor</a></li>
+            <li><a class="nav-link" href="vendorList">Vendor List</a></li>
           </ul>
         </li>
         
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layers"></i><span> Manage Offers</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="add_offer.php">Add offer</a></li>
-            <li><a class="nav-link" href="offerList.php">Offer List</a></li>
+            <li><a class="nav-link" href="add_offer">Add offer</a></li>
+            <li><a class="nav-link" href="offerList">Offer List</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="inbox"></i><span>Manage Support </span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="supportlist.php">Support List</a></li>
+            <li><a class="nav-link" href="supportlist">Support List</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="introscreenList.php">Manage Intro Screen</a></li>
-            <li><a class="nav-link" href="coupontypeList.php">Manage Coupon Offers</a></li>
-            <li><a class="nav-link" href="appsettings.php?appsettingId=1">Manage App Settings</a></li>
-            <li><a class="nav-link" href="tnc.php">Terms And Condition</a></li>
-            <li><a class="nav-link" href="privacy.php">Privacy Policy</a></li>
-            <li><a class="nav-link" href="aboutus.php">About Us</a></li>
+            <li><a class="nav-link" href="introscreenList">Manage Intro Screen</a></li>
+            <li><a class="nav-link" href="coupontypeList">Manage Coupon Offers</a></li>
+            <li><a class="nav-link" href="appsettings?appsettingId=1">Manage App Settings</a></li>
+            <li><a class="nav-link" href="tnc">Terms And Condition</a></li>
+            <li><a class="nav-link" href="privacy">Privacy Policy</a></li>
+            <li><a class="nav-link" href="aboutus">About Us</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="file"></i><span>Manage Report's</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="userReport.php">User Report</a></li>
-            <li><a class="nav-link" href="withdrawalReport.php">Withdrawal Report</a></li>
-            <li><a class="nav-link" href="transactionReport.php">Transaction Report</a></li>
+            <li><a class="nav-link" href="userReport">User Report</a></li>
+            <li><a class="nav-link" href="withdrawalReport">Withdrawal Report</a></li>
+            <li><a class="nav-link" href="transactionReport">Transaction Report</a></li>
           </ul>
         </li>
          
         
         
-        <li><a href="logout.php" class=" nav-link "><i data-feather="log-out"></i><span>Logout</span></a> 
+        <li><a href="logout" class=" nav-link "><i data-feather="log-out"></i><span>Logout</span></a> 
         </li><br>
         
         

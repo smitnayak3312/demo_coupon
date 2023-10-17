@@ -1,12 +1,3 @@
-<?php
-@ob_start();
-@session_start();
-include('include/config.php');
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
-{
-    header('location:login.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +26,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -53,7 +44,6 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                         <thead>
                         <tr>
                           <th>#</th>
-                          <!--<th>Image</th>-->
                           <th>Title</th>
                           <th>Description</th>
                           <th>Status</th>
@@ -61,39 +51,13 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                                                  $no=1;
-                                                    $queryuser="select * from notification order by id desc";
-                                                    $queryuserprofile=mysqli_query($conn,$queryuser);
-                                                    while($data=mysqli_fetch_array($queryuserprofile))
-                                                    {
-                      
-                                                            ?>
                         <tr>
-                          <td><?=$no++;?></td>
-                         <!-- <td><img alt="image" src="image/users_image/<?=$data['image'];?>" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>-->
-                          <td><?=$data['title'];?></td>
-                          <td><?=$data['description'];?></td>
-                          <td><?php 
-                          if($data['status']=="1") 
-  
-                          // if a course is active i.e. status is 1 
-                          // the toggle button must be able to deactivate 
-                          // we echo the hyperlink to the page "deactivate.php"
-                          // in order to make it look like a button
-                          // we use the appropriate css
-                          // red-deactivate
-                          // green- activate
-                          echo 
-                          "<a href=activate.php?notiId=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a>";
-                       
-                          else 
-                          echo 
-                         "<a href=deactivate.php?notiId=".$data['id']." class='btn btn-icon icon-left btn-warning'><i class='fas fa-exclamation-triangle'></i>Deactivate</a>";
-                          ?></td>
-                          <td><?=$data['create_date'];?></td>
+                          <td>1</td>
+                          <td>Testing User</td>
+                          <td>Notification all user</td>
+                          <td><a href=activate.php?notiId=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a></td>
+                          <td>2023-10-17</td>
                         </tr>
-                        <?php } ?>
                       </tbody>
                       </table>
                     </div>
@@ -104,7 +68,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
           </div>
         </section>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->
