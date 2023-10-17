@@ -1,13 +1,3 @@
-<?php
-@ob_start();
-@session_start();
-include('include/config.php');
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
-{
-    header('location:login.php');
-
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +26,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -66,52 +56,32 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                           </tr>
                         </thead>
                         <tbody>
-                        <?php
-                                                  $no=1;
-                                                    $queryuser="select * from vendor_withdrawal_history where status='0' order by id desc";
-                                                    $queryuserprofile=mysqli_query($conn,$queryuser);
-                                                    while($data=mysqli_fetch_array($queryuserprofile))
-                                                    {
-                      
-                                                            ?>
                         <tr>
-                          <td><?=$no++;?></td>
-                          <td onkeyup='swap_val(this.value);'><?=$data['transactionId'];?></td>
-                          <td><?=$data['type'];?></td>
-                          <td>
-                          Ac Holder Name :<?=$data['ac_holder_name'];?><br>
-                          Bank Name :<?=$data['bank_name'];?><br>
-                          Bank A/C :<?=$data['bank_ac_no'];?><br>
-                          Bank IFSC :<?=$data['bank_ifsc'];?><br>
-                          Bank Address :<?=$data['bank_address'];?><br></td>
-                          <td><?=$data['amount'];?></td>
+                          <td>1</td>
+                          <td onkeyup='swap_val(this.value);'>5833321697262235</td>
+                          <td>Debit</td>
+                          <td>Ac Holder Name :SHAMBHU S CAFE BAR
+                            Bank Name :Bank Of Baroda
+                            Bank A/C :7654676749391
+                            Bank IFSC :IFSCBOB193
+                            Bank Address :1, Pramukh Mastana, Kudasan<br></td>
+                          <td>100</td>
 
                           
-                          <td><?php 
-                          if($data['status']=="0"){ 
-                           echo "<div class='badge badge-pill badge-warning mb-1'>Pending</div>";
-                          }elseif ($data['status']=="1") {
-                           echo "<div class='badge badge-pill badge-info mb-1'>Approved</div>";
-                          }
-                          elseif ($data['status']=="2") {
-                           echo "<div class='badge badge-pill badge-danger mb-1 '>Rejected</div>";
-                          }
-
-                          ?></td>
+                          <td><div class='badge badge-pill badge-warning mb-1'>Pending</div></td>
                           <td><div class="btn-group">
                       <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Action
                       </button>
                       <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                        <div class="dropdown-title">request Id :<?=$data['id'];?></div>
-                        <div class="dropdown-title">TID :<?=$data['transactionId'];?></div>
+                        <div class="dropdown-title">request Id :4</div>
+                        <div class="dropdown-title">TID :5833321697262235</div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Accept</a>
-                        <a class="dropdown-item" href="deactivate.php?requestId=<?=$data['id'];?>&amount=<?=$data['amount'];?>&vendorId=<?=$data['vendorId'];?>">Rejected</a>
+                        <a class="dropdown-item" href="deactivate.php?requestId=">Rejected</a>
                       </div>
                         </div></td>
-                          <td><?=$data['create_date'];?></td>
+                          <td>2023-10-17</td>
                         </tr>
-                       <?php } ?>
                       </tbody>
                       </table>
                     </div>
@@ -168,7 +138,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
         </div>
           
       </div>
-     <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

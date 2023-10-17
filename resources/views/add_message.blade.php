@@ -1,34 +1,3 @@
-<?php 
-include('include/config.php');
-@ob_start();
-@session_start();
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
- {
-    header('location:index.php');
- }
- if(isset($_POST['submit']))
-{    
-   $vendorId=$_POST['vendorId'];
-   $title=$_POST['title'];
-   $description=$_POST['description'];
-   $type=$_POST['priority'];
-
-  
-   $query = "insert into important_notification set vendorId='".$vendorId."',title='".$title."',description='".$description."',type='".$type."',status='1'";
-      if(mysqli_query($conn,$query))
-      {
-          //copy($temp,"img/products/".$newname);
-          echo '<script>alert("Important Message successfully");</script>';
-          echo '<script>window.location.href = "importantList.php";</script>';
-      }else{
-          echo '<script>alert("Failed Try Again Later");</script>';
-          echo '<script>window.location.href = "add_message.php";</script>';
-      }
-
-    
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,8 +28,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -77,15 +46,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                       <div class="form-group col-md-9">
                       <label>Select Vendor</label>
                       <select class="form-control selectric"  name="vendorId"  required>
-                      <?php
-                      $query = "SELECT * FROM vendors where status='1'";
-                      $query_run = mysqli_query($conn, $query);
-
-                      while ($row = mysqli_fetch_array($query_run)) {
-                      echo "<option value='".$row['id']."'>Shop Code :'".$row['unique_code']."' || Shop Name : '".$row['shop_name']."' || Location : '".$row['address']."'</option>";
-                      }
-
-                      ?>
+                      <option value="">Shop Code :Shambhu010 || Shop Name : Shambhu Cafe || Location : Gandhinagar</option>
                       </select>
                       </div>  
                       <div class="form-group col-md-3">
@@ -120,7 +81,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
         </form>
         </section>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   

@@ -1,13 +1,3 @@
-<?php
-@ob_start();
-@session_start();
-include('include/config.php');
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
-{
-    header('location:login.php');
-
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +25,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -64,37 +54,19 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                           </tr>
                         </thead>
                         <tbody>
-                        <?php
-                                                  $no=1;
-                                                    $queryuser="select * from vendor_withdrawal_history order by id desc";
-                                                    $queryuserprofile=mysqli_query($conn,$queryuser);
-                                                    while($data=mysqli_fetch_array($queryuserprofile))
-                                                    {
-                      
-                                                            ?>
                         <tr>
-                          <td><?=$no++;?></td>
-                          <td><?=$data['transactionId'];?></td>
-                          <td><?=$data['paymentId'];?></td>
-                          <td><?=$data['type'];?></td>
-                          <td><?=$data['amount'];?></td>
+                          <td>1</td>
+                          <td>5833321697262235</td>
+                          <td>razorpay123</td>
+                          <td>Debit</td>
+                          <td>100</td>
 
                           
-                          <td><?php 
-                          if($data['status']=="0"){ 
-                           echo "<div class='badge badge-pill badge-warning mb-1'>Pending</div>";
-                          }elseif ($data['status']=="1") {
-                           echo "<div class='badge badge-pill badge-info mb-1'>Approved</div>";
-                          }
-                          elseif ($data['status']=="2") {
-                           echo "<div class='badge badge-pill badge-danger mb-1 '>Rejected</div>";
-                          }
-
-                          ?></td>
-                          <td><?=$data['create_date'];?></td>
+                          <td><div class='badge badge-pill badge-info mb-1'>Approved</div></td>
+                          <td>2023-10-17</td>
                           
                         </tr>
-                        <?php } ?>
+                        
                       </tbody>
                       </table>
                     </div>
@@ -105,7 +77,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
           </div>
         </section>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

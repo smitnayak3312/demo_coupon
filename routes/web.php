@@ -49,3 +49,28 @@ Route::get('/notificationList', function () {
 });
 
 
+Route::get('/add_message', function () {
+    return view('add_message');
+});
+
+Route::get('/importantList', function () {
+    return view('importantList');
+});
+
+Route::get('/showRatings', function () {
+    return view('showRatings');
+});
+
+Route::get('/couponList', function () {
+    return view('couponList');
+});
+
+Route::get('/withdrawal', function () {
+    return view('withdrawal');
+});
+
+
+
+Route::get('/withdrawalList', function () {
+    return view('withdrawalList');
+});
