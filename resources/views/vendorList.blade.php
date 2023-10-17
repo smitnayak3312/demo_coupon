@@ -1,12 +1,3 @@
-<?php
-@ob_start();
-@session_start();
-include('include/config.php');
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
-{
-    header('location:login.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +26,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -77,88 +68,46 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                                                  $no=1;
-                                                    $queryuser="select * from vendors order by id asc";
-                                                    $queryuserprofile=mysqli_query($conn,$queryuser);
-                                                    while($data=mysqli_fetch_array($queryuserprofile))
-                                                    {
-                      
-                                                            ?>
                         <tr>
-                          <td><?=$no++;?></td>
+                          <td>1</td>
                           <td><div class="btn-group">
                           <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Action
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                          <div class="dropdown-title"><?=$data['unique_code'];?></div>
-                          <div class="dropdown-title"><?=$data['email'];?></div>
+                          <div class="dropdown-title">SH001MB</div>
+                          <div class="dropdown-title">smitnayak000@gmail.com</div>
                           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Reset Password</a>
-                          <a class="dropdown-item" href="vendor_detail.php?venId=<?=$data['id'];?>">Edit</a>
+                          <a class="dropdown-item" href="vendor_detail.php?venId=">Edit</a>
                           </div>
                           </div>
                           </td>
-                          <td><?=$data['unique_code'];?></td>
-                          <td><?=$data['vendor_name'];?></td>
-                          <td><?=$data['vendor_mobile'];?></td>
-                          <td><?=$data['email'];?></td>
-                          <td><?=$data['shop_name'];?></td>
-                          <?php 
-                          $querycateId="select * from category where id='".$data['categoryId']."'";
-                          $querycatePlan=mysqli_query($conn,$querycateId);
-                          $cateId=mysqli_fetch_array($querycatePlan);
-                          ?>
-                          <td><?=$cateId['name'];?></td>
-                          <td><img alt="image" src="vendor/image/shop_logo/<?=$data['shop_logo'];?>" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>
-                          <td><img alt="image" src="vendor/image/shop_cover/<?=$data['shop_cover'];?>" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>
-                          <td><?=$data['mobile_no'];?></td>
-                          <td><?=$data['address'];?></td>
-                          <?php 
-                          //city name get query
-                          $querycityId="select * from city where id='".$data['cityId']."'";
-                          $querycityPlan=mysqli_query($conn,$querycityId);
-                          $citiesId=mysqli_fetch_array($querycityPlan);
-                          //state name get query
-                          $querystateId="select * from states where id='".$data['stateId']."'";
-                          $querystatePlan=mysqli_query($conn,$querystateId);
-                          $staId=mysqli_fetch_array($querystatePlan);
-                          //country name get query
-                          $querycountryId="select * from countries where id='".$data['countryId']."'";
-                          $querycountryPlan=mysqli_query($conn,$querycountryId);
-                          $counId=mysqli_fetch_array($querycountryPlan);
-
-                          //subscription details get query
-                          $queryPlan="select * from vendor_subscription where id='".$data['subsciptionId']."'";
-                          $queryPlanDetails=mysqli_query($conn,$queryPlan);
-                          $dataPlan=mysqli_fetch_array($queryPlanDetails);
-                          ?>
-                          <td><?=$citiesId['name'];?></td>
-                          <td><?=$staId['name'];?></td>
-                          <td><?=$counId['name'];?></td>
+                          <td>SH001MB</td>
+                          <td>Smit nayak</td>
+                          <td>9512848128</td>
+                          <td>smitnayak000@gmail.com</td>
+                          <td>Shambhus Coffee bar</td>
+                          <td>Restaurants</td>
+                          <td><img alt="image" src="vendor/image/shop_logo/sclogo.jpeg" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>
+                          <td><img alt="image" src="vendor/image/shop_cover/sccover.jpeg" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>
+                          <td>6354212716</td>
+                          <td>Kudasan Behind Pratik Mall, Kudasan, Gandhinagar, Gujarat 382421</td>
+                          <td>Gandhinagar</td>
+                          <td>Gujarat</td>
+                          <td>India</td>
                           <td>
-                          Plan name :<?=$dataPlan['name'];?><br>
-                          Description :<?=$dataPlan['description'];?><br>
-                          Amount :<?=$dataPlan['amount'];?><br>
-                          Day :<?=$dataPlan['day'];?><br>
+                          Plan name :GOLD<br>
+                          Description :1799<br>
+                          Amount :1799<br>
+                          Day :365<br>
                           </td>
-                          <td><?=$data['subs_time'];?></td>
-                          <td><?=$data['plan_start_date'];?></td>
-                          <td><?=$data['plan_end_date'];?></td>
-                          <td><?php 
-                          if($data['status']=="1") 
-  
-                          echo 
-                          "<a href=activate.php?user_id=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a>";
-                       
-                          else 
-                          echo 
-                          "<a href=deactivate.php?user_id=".$data['id']." class='btn btn-icon icon-left btn-warning'><i class='fas fa-exclamation-triangle'></i>Deactivate</a>";
-                           ?></td>
-                           <td><?=$data['update_date'];?></td>
-                          <td><?=$data['create_date'];?></td>
+                          <td>6</td>
+                          <td>2023-08-31 12:47:52</td>
+                          <td>2027-07-26 12:47:52</td>
+                          <td><a href=deactivate.php?user_id=".$data['id']." class='btn btn-icon icon-left btn-warning'><i class='fas fa-exclamation-triangle'></i>Deactivate</a></td>
+                           <td>2022-09-05 19:15:34</td>
+                          <td>2022-07-31 09:52:36</td>
                         </tr>
-                        <?php } ?>
                       </tbody>
                       </table>
                     </div>
@@ -213,7 +162,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
           </div>
         </div>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

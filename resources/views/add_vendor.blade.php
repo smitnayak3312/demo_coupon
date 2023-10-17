@@ -1,13 +1,3 @@
-<?php 
-include('include/config.php');
-@ob_start();
-@session_start();
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
- {
-    header('location:index.php');
- }
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,8 +28,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -77,15 +67,6 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                       <label>Select Plan</label>
                       <select name="subsciptionIdAmount" class="form-control selectric" required>
                       <option value="">--Select Plan--</option>
-                      <?php
-                      $query = "SELECT * FROM vendor_subscription where status='1'";
-                      $query_run = mysqli_query($conn, $query);
-
-                      while ($row = mysqli_fetch_array($query_run)) {
-                      echo "<option value='".$row['id'].",".$row['amount'].",".$row['description']."'>Plan Name :".$row['name']." || Plan Description : ".$row['description']."</option>";
-                      }
-
-                      ?>
                       </select>
                       </div>
                       </div>
@@ -101,7 +82,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
         </form>
         </section>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

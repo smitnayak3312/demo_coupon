@@ -1,12 +1,4 @@
-<?php
-@ob_start();
-@session_start();
-include('include/config.php');
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
-{
-    header('location:login.php');
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +27,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -66,60 +58,39 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                                                  $no=1;
-                                                    $queryuser="select * from users order by id desc";
-                                                    $queryuserprofile=mysqli_query($conn,$queryuser);
-                                                    while($data=mysqli_fetch_array($queryuserprofile))
-                                                    {
-                      
-                                                            ?>
+                        
                         <tr>
-                          <td><?=$no++;?></td>
+                          <td>1</td>
                           <td><div class="btn-group">
                           <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Action
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-                          <div class="dropdown-title"><?=$data['user_name'];?></div>
-                          <div class="dropdown-title"><?=$data['email'];?></div>
+                          <div class="dropdown-title">Mahesh</div>
+                          <div class="dropdown-title">	SFGSFGSG@GMAIL.COM</div>
                           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal">Reset Password</a>
-                          <a class="dropdown-item" href="userDetail.php?userId=<?=$data['id'];?>">Edit</a>
+                          <a class="dropdown-item" href="userDetail.php?userId">Edit</a>
                           </div>
                           </div>
                           </td>
-                          <td><img alt="image" src="image/users_image/<?=$data['image'];?>" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>
-                          <td><?=$data['user_name'];?></td>
-                          <td><?=$data['mobile_no'];?></td>
-                          <td><?=$data['email'];?></td>
-                          <?php 
-                          $queryPlan="select * from user_subscription where id='".$data['subsciptionId']."'";
-                          $queryuserPlan=mysqli_query($conn,$queryPlan);
-                          $dataPlan=mysqli_fetch_array($queryuserPlan);
-                          ?>
+                          <td><img alt="image" src="image/users_image/456987465.png" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>
+                          <td>Mahesh</td>
+                          <td>7849494994</td>
+                          <td>	SFGSFGSG@GMAIL.COM</td>
+                          
                           <td>
-                          Plan name :<?=$dataPlan['name'];?><br>
-                          Description :<?=$dataPlan['description'];?><br>
-                          Amount :<?=$dataPlan['amount'];?><br>
-                          Day :<?=$dataPlan['day'];?><br>
+                          Plan name :Mini<br>
+                          Description :3<br>
+                          Amount :299<br>
+                          Day :90<br>
                           </td>
                           <td>
-                          Start date :<?=$data['plan_start_date'];?><br>
-                          End Date :<?=$data['plan_end_date'];?><br></td>
-                          <td><?=$data['own_referal_code'];?></td>
-                          <td><?php 
-                          if($data['status']=="1") 
-  
-                          echo 
-                          "<a href=activate.php?user_id=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a>";
-                       
-                          else 
-                          echo 
-                          "<a href=deactivate.php?user_id=".$data['id']." class='btn btn-icon icon-left btn-warning'><i class='fas fa-exclamation-triangle'></i>Deactivate</a>";
-                           ?></td>
-                          <td><?=$data['registerd_date'];?></td>
+                          Start date :2023-08-18 07:23:06<br>
+                          End Date :2023-11-16 07:23:06<br></td>
+                          <td>DB1KG9XFB4</td>
+                          <td><a href=activate.php?user_id=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a></td>
+                          <td>2023-08-15 15:49:02</td>
                         </tr>
-                        <?php } ?>
                       </tbody>
                       </table>
                     </div>
@@ -174,7 +145,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
           </div>
         </div>
       </div>
-     <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

@@ -1,45 +1,4 @@
-<?php 
-include('include/config.php');
-@ob_start();
-@session_start();
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
- {
-    header('location:index.php');
- }
- if(isset($_POST['submit']))
-{    
-   $offerCode=trim($_POST['offerCode']);
-   $discount=trim($_POST['discount']);
-   $min_price=trim($_POST['min_price']);
-   $offer_detail=trim($_POST['offer_detail']);
-   $user_limit=trim($_POST['user_limit']);
-   $start_date=trim($_POST['start_date']);
-   $end_date=trim($_POST['end_date']);
 
-   $ucount=mysqli_num_rows(mysqli_query($conn,"select * from offers where  offerCode='".$offerCode."'"));
-    
-   if($ucount >= 1)
-    {
-        echo '<script>alert("Offer Already Created Please Check Offer Code ");</script>';
-          echo '<script>window.location.href = "add_offer.php";</script>';
-    }
-    else{
-  
-   $query = "insert into offers set offerCode='".$offerCode."',discount='".$discount."',offer_detail='".$offer_detail."',min_price='".$min_price."',user_limit='".$user_limit."',start_date='".$start_date."',end_date='".$end_date."'";
-      if(mysqli_query($conn,$query))
-      {
-          //copy($temp,"img/products/".$newname);
-          echo '<script>alert("Offer Create successfully");</script>';
-          echo '<script>window.location.href = "add_offer.php";</script>';
-      }else{
-           echo '<script>alert("Failed To create offer");</script>';
-          echo '<script>window.location.href = "add_offer.php";</script>';
-      }
-
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,8 +29,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -126,7 +85,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
         </form>
         </section>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

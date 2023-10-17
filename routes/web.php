@@ -74,3 +74,33 @@ Route::get('/withdrawal', function () {
 Route::get('/withdrawalList', function () {
     return view('withdrawalList');
 });
+
+Route::get('/add_user', function () {
+    return view('add_user');
+});
+
+Route::get('/userList', function () {
+    return view('userList');
+});
+
+Route::get('/add_vendor', function () {
+    return view('add_vendor');
+});
+
+Route::get('/vendorList', function () {
+    return view('vendorList');
+});
+
+Route::get('/add_offer', function () {
+    return view('add_offer');
+});
+
+
+Route::get('/offerList', function () {
+    return view('offerList');
+});
+
+Route::get('/supportlist', function () {
+    return view('supportlist');
+});
+

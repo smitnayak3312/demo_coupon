@@ -54,49 +54,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                                                  $no=1;
-                                                    $queryuser="select * from support order by id desc";
-                                                    $queryuserprofile=mysqli_query($conn,$queryuser);
-                                                    while($data=mysqli_fetch_array($queryuserprofile))
-                                                    {
-                      
-                                                            ?>
                         <tr>
-                          <td><?=$no++;?></td>
-                          <td><?php 
-                          if($data['issue_type']=="1"){ 
-                           echo "<div class='badge badge-pill badge-danger mb-1'>Bug</div>";
-                          }elseif ($data['issue_type']=="2") {
-                           echo "<div class='badge badge-pill badge-success mb-1'>Feature</div>";
-                          }
-                          elseif ($data['issue_type']=="3") {
-                           echo "<div class='badge badge-pill badge-primary mb-1 '>Payment Issue</div>";
-                          }
-                          elseif ($data['issue_type']=="4") {
-                           echo "<div class='badge badge-pill badge-info mb-1'>User Issue</div>";
-                          }
-                          elseif ($data['issue_type']=="5") {
-                           echo "<div class='badge badge-pill badge-warning  mb-1 '>Others</div>";
-                          }
-
-                          ?></td>
-                          <td><?=$data['subject'];?></td>
-                          <td><?=$data['message'];?></td>
-                          <td><?=$data['reply'];?></td>
+                          <td>1</td>
+                          <td><div class='badge badge-pill badge-primary mb-1 '>Payment Issue</div></td>
+                          <td>Payment issue check</td>
+                          <td>please accept my payment request</td>
+                          <td>Done</td>
                           
-                          <td><?php 
-                        if($data['status']=="0") 
-  
-                        echo "<div class='badge badge-pill badge-danger mb-1'>Pending</div>";
-                       
-                        else 
-                        echo "<div class='badge badge-pill badge-success mb-1'>Solved</div>";
-                        ?></td>
-                        <td><a href="edit_ticket.php?support_id=<?=$data['id'];?>" class="btn btn-primary">Edit</a></td>
-                        <td><?=$data['create_date'];?></td>
+                          <td><div class='badge badge-pill badge-success mb-1'>Solved</div></td>
+                        <td><a href="edit_ticket.php?support_id=" class="btn btn-primary">Edit</a></td>
+                        <td>2023-10-12 14:08:22</td>
                         </tr>
-                        <?php } ?>
                       </tbody>
                       </table>
                     </div>

@@ -1,12 +1,4 @@
-<?php
-@ob_start();
-@session_start();
-include('include/config.php');
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
-{
-    header('location:login.php');
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,8 +24,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -61,43 +53,20 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                                                  $no=1;
-                                                    $queryuser="select * from offers order by id desc";
-                                                    $queryuserprofile=mysqli_query($conn,$queryuser);
-                                                    while($data=mysqli_fetch_array($queryuserprofile))
-                                                    {
-                      
-                                                            ?>
+                        
                         <tr>
-                          <td><?=$no++;?></td>
-                          <td><?=$data['offerCode'];?></td>
-                          <td><?=$data['discount'];?>%</td>
-                          <td><?=$data['user_limit'];?></td>
-                          <td><?=$data['start_date'];?></td>
-                          <td><?=$data['end_date'];?></td>
+                          <td>1</td>
+                          <td>GET10</td>
+                          <td>10%</td>
+                          <td>1</td>
+                          <td>2023-08-01</td>
+                          <td>2024-01-01</td>
                           
-                          <td><?php 
-                    if($data['status']=="1") 
-  
-                        // if a course is active i.e. status is 1 
-                        // the toggle button must be able to deactivate 
-                        // we echo the hyperlink to the page "deactivate.php"
-                        // in order to make it look like a button
-                        // we use the appropriate css
-                        // red-deactivate
-                        // green- activate
-                        echo 
-                      "<a href=activate.php?offerId=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a>";
-                       
-                        else 
-                        echo 
-                         "<a href=deactivate.php?offerId=".$data['id']." class='btn btn-icon icon-left btn-warning'><i class='fas fa-exclamation-triangle'></i>Deactivate</a>";
-                        ?></td>
-                        <td><a href="edit_offer.php?offerId=<?=$data['id'];?>" class="btn btn-primary">Edit</a></td>
-                          <td><a href="delete.php?offerId=<?=$data['id'];?>" class="btn btn-danger">Delete</a></td>
+                          <td><a href=activate.php?offerId=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a></td>
+                        <td><a href="edit_offer.php?offerId=" class="btn btn-primary">Edit</a></td>
+                          <td><a href="delete.php?offerId=" class="btn btn-danger">Delete</a></td>
                         </tr>
-                        <?php } ?>
+                        
                       </tbody>
                       </table>
                     </div>
@@ -108,7 +77,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
           </div>
         </section>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->
