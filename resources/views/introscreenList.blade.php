@@ -1,12 +1,3 @@
-<?php
-@ob_start();
-@session_start();
-include('include/config.php');
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
-{
-    header('location:login.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +26,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -65,41 +56,16 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                                                  $no=1;
-                                                    $queryuser="select * from introscreen order by id desc";
-                                                    $queryuserprofile=mysqli_query($conn,$queryuser);
-                                                    while($data=mysqli_fetch_array($queryuserprofile))
-                                                    {
-                      
-                                                            ?>
                         <tr>
-                          <td><?=$no++;?></td>
-                          <td><img alt="image" src="image/introscreen_image/<?=$data['image'];?>" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>
-                          <td><?=$data['name'];?></td>
-                          <td><?=$data['intro_descirpition'];?></td>
-                          <td>Text color code: <?=$data['text_color_code'];?> <div class="mr-3 user-img-radious-style user-list-img" style="width:20px; height:20px; background-color:<?= $data['text_color_code']?>"></div><br>Background color code: <?=$data['bg_color_code'];?> <div class="mr-3 user-img-radious-style user-list-img" style="width:20px; height:20px; background-color:<?= $data['bg_color_code']?>"></div></td>
-                          <td><?php 
-                    if($data['status']=="1") 
-  
-                        // if a course is active i.e. status is 1 
-                        // the toggle button must be able to deactivate 
-                        // we echo the hyperlink to the page "deactivate.php"
-                        // in order to make it look like a button
-                        // we use the appropriate css
-                        // red-deactivate
-                        // green- activate
-                        echo 
-                      "<a href=activate.php?intro_id=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a>";
-                       
-                        else 
-                        echo 
-                         "<a href=deactivate.php?intro_id=".$data['id']." class='btn btn-icon icon-left btn-warning'><i class='fas fa-exclamation-triangle'></i>Deactivate</a>";
-                        ?></td>
-                        <td><a href="edit_introscreen.php?intro_id=<?=$data['id'];?>" class="btn btn-primary">Edit</a></td>
-                          <td><a href="delete.php?intro_id=<?=$data['id'];?>" class="btn btn-danger">Delete</a></td>
+                          <td>1</td>
+                          <td><img alt="image" src="image/introscreen_image/983539330.png" class="mr-3 user-img-radious-style user-list-img" width="50px" height="50px"></td>
+                          <td>Pay as you go</td>
+                          <td>Here we come with something new, check out pay as you go and have more fun.</td>
+                          <td>Text color code: #000000 <div class="mr-3 user-img-radious-style user-list-img" style="width:20px; height:20px; background-color:#000000"></div><br>Background color code: #a2cce2 <div class="mr-3 user-img-radious-style user-list-img" style="width:20px; height:20px; background-color:#a2cce2"></div></td>
+                          <td><a href=activate.php?intro_id=".$data['id']." class='btn btn-icon icon-left btn-success'><i class='fas fa-check'></i>Activate</a></td>
+                        <td><a href="edit_introscreen.php?intro_id=" class="btn btn-primary">Edit</a></td>
+                          <td><a href="delete.php?intro_id=" class="btn btn-danger">Delete</a></td>
                         </tr>
-                        <?php } ?>
                       </tbody>
                       </table>
                     </div>
@@ -110,7 +76,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
           </div>
         </section>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

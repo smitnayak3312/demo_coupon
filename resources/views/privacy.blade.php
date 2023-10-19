@@ -1,31 +1,3 @@
-<?php 
-include('include/config.php');
-@ob_start();
-@session_start();
-if(!isset($_SESSION['id']) || $_SESSION['id'] == "") 
- {
-    header('location:login.php');
- }
- if(isset($_POST['submit']))
-{    
-   $privacy_policy=trim($_POST['privacy_policy']);
-  // $image=trim($_POST['image']);
-
-   $query = "update admin set privacy_policy='".$privacy_policy."' where id='1'";
-   $final=mysqli_query($conn,$query);
-   if($final)
-   {
-       echo '<script>alert("Privacy Policy update successfully");window.location.assign("privacy.php")</script>';
-   }else{
-    
-       echo '<script>alert("Please Try Again Later");window.location.assign("privacy.php")</script>';
-   
-   }
-   
-}
-
- $fetch=mysqli_fetch_array(mysqli_query($conn,"select * from admin where id='1'"));
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,8 +26,8 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php include('include/header.php'); ?>
-      <?php include('include/navbar.php'); ?>
+      @include('include.header')
+      @include('include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -72,7 +44,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Privacy Policy</label>
                       <div class="col-sm-12 col-md-7">
-                        <textarea name="privacy_policy" rows="5" cols="5" class="form-control" required><?=$fetch['privacy_policy'];?></textarea>
+                        <textarea name="tnc" rows="5" cols="5" class="form-control" required>This is application Privacy Policy</textarea>
                       </div>
                     </div>
                     <div class="form-group row mb-4">
@@ -90,7 +62,7 @@ if(!isset($_SESSION['id']) || $_SESSION['id'] == "")
         </form>
         </section>
       </div>
-      <?php include('include/footer.php'); ?>
+      @include('include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->

@@ -104,3 +104,31 @@ Route::get('/supportlist', function () {
     return view('supportlist');
 });
 
+
+Route::get('/introscreenList', function () {
+    return view('introscreenList');
+});
+
+
+
+Route::get('/coupontypeList', function () {
+    return view('coupontypeList');
+});
+
+Route::get('/appsettings', function () {
+    return view('appsettings');
+});
+
+
+Route::get('/tnc', function () {
+    return view('tnc');
+});
+
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
+
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
