@@ -26,8 +26,8 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      @include('include.header')
-      @include('include.navbar')
+      @include('admin.include.header')
+      @include('admin.include.navbar')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
@@ -72,7 +72,7 @@
           </div>
         </section>
       </div>
-      @include('include.footer')
+      @include('admin.include.footer')
     </div>
   </div>
   <!-- General JS Scripts -->
