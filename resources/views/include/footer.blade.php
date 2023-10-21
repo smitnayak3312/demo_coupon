@@ -5,3 +5,11 @@
     <div class="footer-right">
     </div>
   </footer>
+  <script type="text/javascript">
+  
+    $(document).ready(function(){
+      $("#Message").delay(3000).slideUp(300);
+      
+  });
+  </script>
+  

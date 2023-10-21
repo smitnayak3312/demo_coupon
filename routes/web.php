@@ -23,13 +23,19 @@ Route::get('/couponHistory', function () {
     return view('couponHistory');
 });
 
-Route::get('/add_category', function () {
-    return view('add_category');
-});
+        Route::get('/category','App\Http\Controllers\Admin\CategoryController@CategoryList')->name('category');
+        Route::get('/add_category','App\Http\Controllers\Admin\CategoryController@CategoryAdd')->name('add_category');
+        Route::post('/add_category/save','App\Http\Controllers\Admin\CategoryController@CategorySave')->name('add_category_save');
+        /*Route::get('/amenities/edit/{id}','App\Http\Controllers\MasterAdmin\CategoryController@AmenitiesEdit')->name('amenitiesedit');
+        Route::post('/amenities/update','App\Http\Controllers\MasterAdmin\CategoryController@AmenitiesUpdate')->name('amenitiesupdate');
+        Route::post('/amenities/delete','App\Http\Controllers\MasterAdmin\CategoryController@AmenitiesDelete')->name('amenitiesdelete');
+        Route::post('/amenities','App\Http\Controllers\MasterAdmin\CategoryController@AmenitiesGetList')->name('amenitiesgetlist');*/
 
-Route::get('/category', function () {
-    return view('category');
-});
+/*Route::get('/add_category', function () {
+    return view('add_category');
+});*/
+
+
 
 Route::get('/add_slider', function () {
     return view('add_slider');
