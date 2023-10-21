@@ -103,10 +103,6 @@ class CategoryController extends Controller
      
         return redirect()->route('banklist')->with('success','Bank Data Successfully Deleted.');
         */
-
-       
-
-
-
+        
     }
 }
